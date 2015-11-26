@@ -1,0 +1,19 @@
+<header>
+	<div class="wancho">
+		<h1 class="titulo-principal">
+			Portal de Noticias
+		</h1>
+		<nav class="nav-login">
+			{% if request.user.is_authenticated %}
+					<a href="">{{request.user.email}}</a>
+					<a href="{% url 'usuario:salir' %}">Salir</a>
+			{% endif %}
+			{% if not request.user.is_authenticated %}
+			<a href="{% url 'usuario:ingresar' %}">Login</a>
+			{% endif %}
+			<a href="{% url 'usuario:registro' %}">Registro</a>
+
+		</nav>
+	</div>
+
+</header>

@@ -1,0 +1,31 @@
+{% load staticfiles %}
+{% spaceless %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vounty</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link href="{% static 'css/zeus.css' %}" rel="stylesheet" type="text/css" />
+  {% block css %}
+
+  {% endblock css %}
+</head>
+<body>
+  <div class="wrapper">
+    {% include "common/header.html" %}
+    {% block content %}
+
+    {% endblock content %}
+    {% include "common/footer.html" %}
+  </div>
+
+<script src="{% static 'js/zeus.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jQuery-2.1.4.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.domenu-0.13.37.js' %}" type="text/javascript"></script>
+{% block js %}
+
+{% endblock js %}
+</body>
+</html>
+{% endspaceless %}

@@ -1,0 +1,40 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+	<section class="listado-pagina wancho">
+
+		<div class="cnt-tabla-listado">
+			<div class="cnt-registrar-noticia">
+				<a href="{% url 'usuario:crear_pagina' %}" class="crear-entrada noticia-lados">
+					Crear Entrada
+				</a>
+				<a href="" class="ver-pagina noticia-lados">
+					Ver pagina
+				</a>
+			</div>
+			<table>
+			  <tr class="cabecera">
+			    <td>CODIGO</td>
+			    <td>TITULO</td>
+			    <td>FECHA</td>
+			    <td>ESTADO</td>
+			    <td>ACCIONES</td>
+			  </tr>
+			  {% for noticia in noticias %}
+
+
+			  <tr class="contenido">
+			  	<td>{{noticia.id}}</td>
+			    <td>{{noticia.titulo}}</td>
+			    <td>{{noticia.fecha}}</td>
+			    <td>{{noticia.get_estado_display}}</td>
+			    <td class="enlace"><a target="_blank" href="{{noticia.get_absolute_url}}">Ver</a>
+							<a target="_blank" href="{{noticia.get_delete_url}}">Eliminar</a>
+			    </td>
+
+			  </tr>
+			  {% endfor %}
+			</table>
+		</div>
+	</section>
+{% endblock content %}

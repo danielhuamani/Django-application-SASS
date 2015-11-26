@@ -1,0 +1,200 @@
+
+{% extends 'common/base.html' %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.domenu-0.13.37.css' %}"/>
+{% endblock css %}
+{% block content %}
+<style>
+        .cf:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+
+        * html .cf {zoom: 1;}
+
+        *:first-child+html .cf {zoom: 1;}
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-size: 100%;
+            margin: 0;
+            padding: 1.75em;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 1.75em;
+            margin: 0 0 0.6em 0;
+        }
+
+        a {color: #2996cc;}
+
+        a:hover {text-decoration: none;}
+
+        p {line-height: 1.5em;}
+
+        .small {
+            color: #666;
+            font-size: 0.875em;
+        }
+
+        .large {font-size: 1.25em;}
+    </style>
+
+<section class="ver-pagina wancho">
+	<form action="#" method="POST">
+			{% csrf_token %}
+			{{form}}
+			<button>Enviar</button>
+	</form>
+	<button type="button"
+        class="btn btn-primary btn-lg" data-follow="follow"
+        data-target="52cd6196211b6fc26a8b456c">ds</button>
+	<br>
+	<hr>
+	<br>
+	<ul class="position-relative">
+		<li><h3>test</h3></li>
+		{% for categoriaabuelo in categorias_abuelo %}
+			{% if not categoriaabuelo.categoria %}
+      <li><h3 draggable='true' data-pk={{categoriaabuelo.pk}} class="cat-abuelo">{{categoriaabuelo.nombre}}</h3>
+					<ul>
+						{% for categoriapadre in categoriaabuelo.mucha_categoria.all %}
+							<li><h3 draggable='true' data-pk={{categoriapadre.pk}} class="cat-padre">{{categoriapadre.nombre}}</h3>
+								<ul>
+										{% for categoriahijo in categoriapadre.mucha_categoria.all %}
+											<li><h3 draggable='true' data-pk={{categoriahijo.pk}} class="cat-hijo">{{categoriahijo.nombre}}</h3></li>
+										{% endfor %}
+								</ul>
+							</li>
+						{% endfor %}
+					</ul>
+      </li>
+      {% endif %}
+		{% endfor %}
+		<li>
+
+		</li>
+	</ul>
+
+</section>
+<section class="gg">
+	<div class="dd" id="domenu">
+                <button class="dd-new-item">+</button>
+                    <!-- .dd-item-blueprint is a template for all .dd-item's -->
+                    <li class="dd-item-blueprint">
+                        <div class="dd-handle dd3-handle">Drag</div>
+                            <div class="dd3-content">
+                                <span>[item_name]</span>
+
+                                <div class="dd-edit-box" style="display: none;">
+
+                                    <input type="text" name="title" placeholder="Item" data-placeholder="Item {?numeric.increment}" data-default-value="Item {?numeric.increment}">
+                                    <select name="superselect">
+                                        <option>select something...</option>
+                                        <optgroup label="Pages">
+                                            <option value="1">http://example.com/page/1</option>
+                                            <option value="2">http://example.com/page/2</option>
+                                        </optgroup>
+                                        <optgroup label="Categories">
+                                            <option value="1">News</option>
+                                            <option value="2">Stories</option>
+                                        </optgroup>
+                                    </select>
+                                    <i>&#x270e;</i>
+                                </div>
+                            </div>
+                    </li>
+
+                <ol class="dd-list"></ol>
+            </div>
+</section>
+
+{% endblock content %}
+{% block js %}
+<script>
+	// $("h3").on('dragenter', function(event) {
+	// 	event.preventDefault();
+	// 	$(this).addClass('color-red')
+	// 	console.log(event)
+	// 	console.log("entro")
+	// 	var position = $( this ).position();
+	// 	console.log(position.left)
+	// 	console.log(position.top)
+	// 	 Act on the event
+	// });
+	// $("h3").on('dragleave', function(event) {
+	// 	event.preventDefault();
+	// 	$(this).removeClass('color-red')
+	// 	console.log("entrodrasd")
+	// 	var position = $( this ).position();
+	// 	console.log(position.top)
+	// 	/* Act on the event */
+	// });
+</script>
+
+<script>
+
+    $(document).ready(function()
+    {
+
+        var updateOutput = function(e)
+        {
+            var list   = e.length ? e : $(e.target),
+                output = list.data('output');
+            if (window.JSON) {
+                output.val(window.JSON.stringify(list.domenu('serialize')));//, null, 2));
+            } else {
+                output.val('JSON browser support required for this demo.');
+            }
+        };
+
+        $('#domenu').domenu({
+            onDomenuInitialized: [function() {
+                console.log('event: onDomenuInitialized', 'arguments:', arguments, 'context:', this);
+            }],
+            data: '[{% for catabuelo in categorias_abuelo %}{% if not catabuelo.categoria %}{"id":"{{catabuelo.pk}}", "title":"{{catabuelo.nombre}}", "http": "" {% if catabuelo.mucha_categoria.all %},"children":[{% for catpadre in catabuelo.mucha_categoria.all %}{"id":"{{catpadre.pk}}","title":"{{catpadre.nombre}}","http":""}{% if forloop.last %}]{% endif %}{% endfor %}{% endif %}}{% if not forloop.last %},{% endif %}{% endif %}{% endfor %}]'
+            // data: '[{"id":11,"title":"Item 11","http":""},{"id":10,"title":"Item 10","http":""},{"id":9,"title":"Item 9","http":""},{"id":6,"title":"Home","http":"","children":[{"id":5,"title":"Item 5dsad","http":""},{"id":4,"title":"Item 4","http":"","children":[{"id":3,"title":"Item 3","http":""},{"id":2,"title":"Item 2","http":"","children":[{"id":7,"title":"Example","http":"http://google.com"},{"id":8,"title":"Item 8","http":""}]}]}]},{"id":1,"title":"Item 1","http":""}]'
+        }).parseJson()
+                .onParseJson(function() {
+                    console.log('event: onFromJson', 'arguments:', arguments, 'context:', this);
+                })
+                .onToJson(function() {
+                    console.log('event: onToJson', 'arguments:', arguments, 'context:', this);
+                })
+                .onSaveEditBoxInput(function() {
+                    console.log('event: onSaveEditBoxInput', 'arguments:', arguments, 'context:', this);
+                })
+                .onItemDrag(function() {
+                    console.log('event: onItemDrag', 'arguments:', arguments, 'context:', this);
+                })
+                .onItemDrop(function() {
+                    console.log('event: onItemDrop', 'arguments:', arguments, 'context:', this);
+                })
+                .onItemAdded(function() {
+                    console.log('event: onItemAdded', 'arguments:', arguments, 'context:', this);
+                })
+                .onItemRemoved(function() {
+                    console.log('event: onItemRemoved', 'arguments:', arguments, 'context:', this);
+                })
+                .onItemStartEdit(function() {
+                    console.log('event: onItemStartEdit', 'arguments:', arguments, 'context:', this);
+                })
+                .onItemEndEdit(function() {
+                    console.log('event: onItemEndEdit', 'arguments:', arguments, 'context:', this);
+                });
+    });
+</script>
+
+
+{% endblock js %}

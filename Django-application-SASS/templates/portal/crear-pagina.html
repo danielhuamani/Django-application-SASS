@@ -1,0 +1,57 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+	<section class="listado-pagina wancho">
+
+		<div class="cnt-tabla-listado">
+			<div class="cnt-registrar-noticia">
+				<a href="{% url 'usuario:listado_paginas' %}" class="crear-entrada noticia-lados">
+					Cancelar
+				</a>
+
+			</div>
+			<div class="cnt-formulario" >
+				<form action="#" method="POST" clas="form-crear-pagina" enctype="multipart/form-data">
+				{% csrf_token %}
+					<ul class="ul-simple">
+						<li>
+							<label for="">TITULO</label>
+							{{form.titulo}}
+							{{form.titulo.errors.as_text}}
+						</li>
+					</ul>
+					<ul class="ul-simple">
+						<li>
+							<label for="">IMAGEN</label>
+							{{form.imagen}}
+							{{form.imagen.errors.as_text}}
+						</li>
+					</ul>
+					<ul class="ul-simple">
+						<li>
+							<label for="">ESTADO</label>
+							{{form.estado}}
+							{{form.estado.errors.as_text}}
+						</li>
+					</ul>
+					<ul class="ul-contenido">
+						<li>
+							<label for="">CONTENIDO</label>
+							{{form.contenido}}
+							{{form.contenido.errors.as_text}}
+						</li>
+					</ul>
+					<button>Guardar</button>
+					{{form.errors}}
+				</form>
+			</div>
+		</div>
+	</section>
+{% endblock content %}
+{% block js %}
+<script>
+	$(document).ready(function() {
+
+	});
+</script>
+{% endblock js %}

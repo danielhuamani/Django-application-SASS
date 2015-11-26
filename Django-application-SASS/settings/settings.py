@@ -29,15 +29,30 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+SHARED_APPS = (
+    'tenant_schemas',  # mandatory
+    'apps.usuario',
 
-INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
+
+    # everything below here is optional
+    'django.contrib.auth',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.admin',
 )
+
+TENANT_APPS = (
+    # The following Django contrib apps must be in TENANT_APPS
+    'django.contrib.contenttypes',
+
+    # your tenant-specific apps
+    'apps.noticia',
+
+)
+
+INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -48,10 +63,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'tenant_schemas.middleware.TenantMiddleware',
 )
 
 ROOT_URLCONF = 'settings.urls'
-
+PUBLIC_SCHEMA_URLCONF = 'settings.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -70,14 +86,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'settings.wsgi.application'
 
-
+TENANT_MODEL = "usuario.Usuario"
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'tenant_schemas.postgresql_backend',
-        'NAME': 'sass',
+        'NAME': 'prueba_sass',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',
@@ -85,10 +101,7 @@ DATABASES = {
         'CONN_MAX_AGE': None,
     }
 }
-MIDDLEWARE_CLASSES = (
-    'tenant_schemas.middleware.TenantMiddleware',
-    #...
-)
+
 DATABASE_ROUTERS = (
     'tenant_schemas.routers.TenantSyncRouter',
 )

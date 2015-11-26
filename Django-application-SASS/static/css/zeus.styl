@@ -1,0 +1,203 @@
+//varibles
+azul = #04497e
+plomo = #DED9D9
+lato = 'Lato', sans-serif;
+//clases generales
+*
+  margin 0px
+  padding 0px
+
+a
+  text-decoration none
+  &:hover
+    text-decoration underline
+    transition 0.3s ease all
+ul li
+  list-style-type none
+
+.wancho
+  width 96%
+  max-width 1200px
+  margin auto
+
+.titulo-secundario
+  color black
+  font-family lato
+  font-size 28px
+
+input, textarea, select
+  border-radius 7px
+  border none
+  padding-left 10px
+  height 26px
+button
+  color plomo
+  font-size 18px
+  border none
+  background azul
+  color white
+  padding 6px 12px
+  cursor pointer
+  border-radius 7px
+  /********** Final de las clases generales **************/
+//Header
+
+header
+  background azul
+  overflow hidden
+  width 100%
+  padding 10px 0px
+  .titulo-principal
+    color white
+    float left
+    font-family lato
+    font-size 30px
+  .nav-login
+    float right
+    margin-top 10px
+    a
+      color white
+      display inline-block
+      font-family lato
+      font-size 16px
+      margin 0px 10px
+
+
+footer
+  background azul
+  height 60px
+  width 100%
+
+
+//paginas
+
+.login
+  .cnt-formulario
+    background plomo
+    max-width 300px
+    margin auto
+    margin-top 50px
+    margin-bottom 50px
+    padding 15px
+    form
+      margin-top 10px
+      ul
+        margin 10px 0px
+        li
+          input
+            width 96%
+
+
+.listado-pagina
+  .cnt-tabla-listado
+    margin auto
+    margin-top 100px
+    margin-bottom 100px
+    width 960px
+
+    .cnt-registrar-noticia
+      margin-bottom 20px
+      overflow hidden
+      .noticia-lados
+        color white
+        background azul
+        border-radius 7px
+        padding 8px 12px
+      .crear-entrada
+        float left
+
+      .ver-pagina
+        float right
+    table
+      border-collapse collapse
+      border 1px solid white
+      width 100%
+      margin auto
+      tr.cabecera
+        background azul
+        color white
+
+        text-align center
+        td
+          font-family lato
+          padding 10px
+      tr.contenido
+        background plomo
+
+        td
+          text-align center
+          padding 10px
+          color black
+          font-size 16px
+          font-family lato
+          a
+            margin 0px 5px
+            color white
+            background azul
+            padding 5px 12px
+            border-radius 8px
+    .cnt-formulario
+      background plomo
+      padding 20px 20px
+      .ul-simple
+        width 33%
+        display inline-block
+        label
+          display block
+          color black
+          font-family lato
+          margin-bottom 5px
+        input, select
+          width 80%
+      .ul-contenido
+        width 100%
+        margin-top 20px
+        label
+          display block
+          color black
+          font-family lato
+          margin-bottom 5px
+        textarea
+          width 94%
+          height 100px !important
+
+
+.ver-pagina
+  margin-top 100px
+  margin-bottom 100px
+  .slide
+    margin-bottom 20px
+    border-bottom 1px solid azul
+  .columna-estado
+    width 30%
+    display inline-block
+    margin-right 30px
+    vertical-align top
+    h2
+      font-family lato
+      font-size 20px
+    h3
+      font-family lato
+      font-size 16px
+  .columna-detalle
+    width 60%
+    display inline-block
+    vertical-align top
+    .seguir
+      margin-top 20px
+      margin-bottom 20px
+      a
+        color white
+        background azul
+        padding 8px 12px
+        border-radius 8px
+
+    .detalle
+      margin-top 20px
+      font-family lato
+      font-size 20px
+    figure
+      img
+        display block
+        width 100%
+        height auto

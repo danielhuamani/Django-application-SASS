@@ -1,0 +1,221 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  transition: 0.3s ease all;
+}
+ul li {
+  list-style-type: none;
+}
+.wancho {
+  width: 96%;
+  max-width: 1200px;
+  margin: auto;
+}
+.titulo-secundario {
+  color: #000;
+  font-family: 'Lato', sans-serif;
+  font-size: 28px;
+}
+input,
+textarea,
+select {
+  border-radius: 7px;
+  border: none;
+  padding-left: 10px;
+  height: 26px;
+}
+button {
+  color: #ded9d9;
+  font-size: 18px;
+  border: none;
+  background: #04497e;
+  color: #fff;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 7px;
+/********** Final de las clases generales **************/
+}
+header {
+  background: #04497e;
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0px;
+}
+header .titulo-principal {
+  color: #fff;
+  float: left;
+  font-family: 'Lato', sans-serif;
+  font-size: 30px;
+}
+header .nav-login {
+  float: right;
+  margin-top: 10px;
+}
+header .nav-login a {
+  color: #fff;
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  margin: 0px 10px;
+}
+footer {
+  background: #04497e;
+  height: 60px;
+  width: 100%;
+}
+.login .cnt-formulario {
+  background: #ded9d9;
+  max-width: 300px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 15px;
+}
+.login .cnt-formulario form {
+  margin-top: 10px;
+}
+.login .cnt-formulario form ul {
+  margin: 10px 0px;
+}
+.login .cnt-formulario form ul li input {
+  width: 96%;
+}
+.listado-pagina .cnt-tabla-listado {
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  width: 960px;
+}
+.listado-pagina .cnt-tabla-listado .cnt-registrar-noticia {
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.listado-pagina .cnt-tabla-listado .cnt-registrar-noticia .noticia-lados {
+  color: #fff;
+  background: #04497e;
+  border-radius: 7px;
+  padding: 8px 12px;
+}
+.listado-pagina .cnt-tabla-listado .cnt-registrar-noticia .crear-entrada {
+  float: left;
+}
+.listado-pagina .cnt-tabla-listado .cnt-registrar-noticia .ver-pagina {
+  float: right;
+}
+.listado-pagina .cnt-tabla-listado table {
+  border-collapse: collapse;
+  border: 1px solid #fff;
+  width: 100%;
+  margin: auto;
+}
+.listado-pagina .cnt-tabla-listado table tr.cabecera {
+  background: #04497e;
+  color: #fff;
+  text-align: center;
+}
+.listado-pagina .cnt-tabla-listado table tr.cabecera td {
+  font-family: 'Lato', sans-serif;
+  padding: 10px;
+}
+.listado-pagina .cnt-tabla-listado table tr.contenido {
+  background: #ded9d9;
+}
+.listado-pagina .cnt-tabla-listado table tr.contenido td {
+  text-align: center;
+  padding: 10px;
+  color: #000;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+}
+.listado-pagina .cnt-tabla-listado table tr.contenido td a {
+  margin: 0px 5px;
+  color: #fff;
+  background: #04497e;
+  padding: 5px 12px;
+  border-radius: 8px;
+}
+.listado-pagina .cnt-tabla-listado .cnt-formulario {
+  background: #ded9d9;
+  padding: 20px 20px;
+}
+.listado-pagina .cnt-tabla-listado .cnt-formulario .ul-simple {
+  width: 33%;
+  display: inline-block;
+}
+.listado-pagina .cnt-tabla-listado .cnt-formulario .ul-simple label {
+  display: block;
+  color: #000;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 5px;
+}
+.listado-pagina .cnt-tabla-listado .cnt-formulario .ul-simple input,
+.listado-pagina .cnt-tabla-listado .cnt-formulario .ul-simple select {
+  width: 80%;
+}
+.listado-pagina .cnt-tabla-listado .cnt-formulario .ul-contenido {
+  width: 100%;
+  margin-top: 20px;
+}
+.listado-pagina .cnt-tabla-listado .cnt-formulario .ul-contenido label {
+  display: block;
+  color: #000;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 5px;
+}
+.listado-pagina .cnt-tabla-listado .cnt-formulario .ul-contenido textarea {
+  width: 94%;
+  height: 100px !important;
+}
+.ver-pagina {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.ver-pagina .slide {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #04497e;
+}
+.ver-pagina .columna-estado {
+  width: 30%;
+  display: inline-block;
+  margin-right: 30px;
+  vertical-align: top;
+}
+.ver-pagina .columna-estado h2 {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+}
+.ver-pagina .columna-estado h3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+}
+.ver-pagina .columna-detalle {
+  width: 60%;
+  display: inline-block;
+  vertical-align: top;
+}
+.ver-pagina .columna-detalle .seguir {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.ver-pagina .columna-detalle .seguir a {
+  color: #fff;
+  background: #04497e;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+.ver-pagina .columna-detalle .detalle {
+  margin-top: 20px;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+}
+.ver-pagina .columna-detalle figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

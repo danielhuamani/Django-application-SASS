@@ -1,0 +1,28 @@
+{% extends 'common/base.html' %}
+{% block content %}
+
+
+	<section class="login wancho">
+		<div class="cnt-formulario">
+			<h2 class="titulo-secundario">Registro</h2>
+			<form action="#" method="POST">
+			{% csrf_token %}
+				<ul>
+					<li><input type="text" name="usuario" placeholder="Usuario"></li>
+					{{form.usuario.errors.as_text}}
+				</ul>
+				<ul>
+					<li><input type="email" name="email" placeholder="email"></li>
+					{{form.email.errors.as_text}}
+				</ul>
+				<ul>
+					<li><input type="password" name="password" placeholder="password"></li>
+
+				</ul>
+				<button>Ingresar</button>
+			</form>
+		</div>
+
+	</section>
+
+{% endblock content %}
