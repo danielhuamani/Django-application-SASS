@@ -20,8 +20,6 @@ class IngresarForm(forms.Form):
 
     def auth(self):
         cd = self.cleaned_data
-        print cd['usuario']
-        print cd['password']
         return authenticate(username=cd['usuario'], password=cd['password'])
 
 

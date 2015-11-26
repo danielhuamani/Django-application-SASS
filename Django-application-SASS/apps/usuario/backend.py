@@ -5,7 +5,8 @@ from .models import Usuario
 class UsuarioBackend(object):
 
     def authenticate(self, username=None, password=None):
-
+        print (username)
+        print (password)
         try:
             user = Usuario.objects.get(usuario=username)
 

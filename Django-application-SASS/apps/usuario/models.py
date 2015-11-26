@@ -5,7 +5,7 @@ from pbkdf2 import crypt
 from tenant_schemas.models import TenantMixin
 
 
-SALT = settings.VOUNTY_AUTH_SALT
+SALT = settings.APLICACION_SASS
 NUMERO_DE_ITERACIONES = 500
 
 
@@ -18,6 +18,7 @@ class Usuario(TenantMixin):
     estado = models.BooleanField("Estado", default=True)
     password_ok = models.BooleanField(u'¿Contraseña encriptada?', default=False)
     auto_create_schema = True
+
     class Meta:
         ordering = ['usuario']
 

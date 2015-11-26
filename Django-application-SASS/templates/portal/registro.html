@@ -7,6 +7,7 @@
 			<h2 class="titulo-secundario">Registro</h2>
 			<form action="#" method="POST">
 			{% csrf_token %}
+
 				<ul>
 					<li><input type="text" name="usuario" placeholder="Usuario"></li>
 					{{form.usuario.errors.as_text}}
@@ -19,6 +20,14 @@
 					<li><input type="password" name="password" placeholder="password"></li>
 
 				</ul>
+				<ul>
+					<li><input type="text" name="domain_url" placeholder="domain_url"></li>
+
+				</ul>
+				<ul>
+					<li><input type="text" name="schema_name" placeholder="schema_name"></li>
+
+				</ul>				
 				<button>Ingresar</button>
 			</form>
 		</div>

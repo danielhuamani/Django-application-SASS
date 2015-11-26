@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
+from os.path import dirname, join, realpath
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = dirname(dirname(realpath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,9 +25,9 @@ SECRET_KEY = 'qmfe-0hk4rnxr$av4v5)mgn+8mdlcx_n#2js$#i2gu)%yv7n_d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
-
+APLICACION_SASS = 'aplicacion'
 # Application definition
 SHARED_APPS = (
     'tenant_schemas',  # mandatory
@@ -41,6 +41,7 @@ SHARED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
+    'django.contrib.staticfiles',
 )
 
 TENANT_APPS = (
@@ -55,6 +56,7 @@ TENANT_APPS = (
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
 MIDDLEWARE_CLASSES = (
+    # 'tenant_schemas.middleware.TenantMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -63,15 +65,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'tenant_schemas.middleware.TenantMiddleware',
 )
 
-ROOT_URLCONF = 'settings.urls'
+ROOT_URLCONF = 'settings.urls_public'
 PUBLIC_SCHEMA_URLCONF = 'settings.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': (join(BASE_DIR, 'templates'),),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,7 +86,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'settings.wsgi.application'
-
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'apps.usuario.backend.UsuarioBackend',
+)
 TENANT_MODEL = "usuario.Usuario"
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -121,5 +125,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+MEDIA_ROOT = join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
+STATIC_ROOT = ''
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    join(BASE_DIR, 'static'),
+)

@@ -44,7 +44,7 @@ def salir(request):
 class RegistroCreate(CreateView):
     ''' Vista para registrar usuario, se uso vistas basadas en clases '''
     model = Usuario
-    fields = ['usuario', 'password', 'email']
+    fields = ['usuario', 'password', 'email', 'schema_name', 'domain_url']
     template_name = 'portal/registro.html'
     success_url = reverse_lazy('usuario:ingresar')
 
