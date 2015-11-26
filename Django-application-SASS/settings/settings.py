@@ -56,7 +56,7 @@ TENANT_APPS = (
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
 MIDDLEWARE_CLASSES = (
-    # 'tenant_schemas.middleware.TenantMiddleware',
+    'tenant_schemas.middleware.TenantMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -67,8 +67,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'settings.urls_public'
-PUBLIC_SCHEMA_URLCONF = 'settings.urls'
+ROOT_URLCONF = 'settings.urls'
+PUBLIC_SCHEMA_URLCONF = 'settings.urls_public'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
