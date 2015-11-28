@@ -2,7 +2,6 @@
 from django.contrib.auth import authenticate
 from .models import Usuario
 from django import forms
-from apps.noticia.models import Noticia
 
 
 class IngresarForm(forms.Form):
@@ -21,9 +20,3 @@ class IngresarForm(forms.Form):
     def auth(self):
         cd = self.cleaned_data
         return authenticate(username=cd['usuario'], password=cd['password'])
-
-
-class NoticiaForm(forms.ModelForm):
-    class Meta:
-        model = Noticia
-        fields = ['estado', 'imagen', 'contenido', 'titulo']

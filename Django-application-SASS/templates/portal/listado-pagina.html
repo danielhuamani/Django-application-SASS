@@ -1,11 +1,11 @@
-{% extends 'common/base.html' %}
+{% extends 'common/base_domain.html' %}
 
 {% block content %}
 	<section class="listado-pagina wancho">
 
 		<div class="cnt-tabla-listado">
 			<div class="cnt-registrar-noticia">
-				<a href="{% url 'usuario:crear_pagina' %}" class="crear-entrada noticia-lados">
+				<a href="{% url 'noticia:crear_pagina' %}" class="crear-entrada noticia-lados">
 					Crear Entrada
 				</a>
 				<a href="" class="ver-pagina noticia-lados">
