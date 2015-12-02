@@ -20,10 +20,10 @@ class Noticia(models.Model):
         verbose_name_plural = "Noticias"
 
     def get_delete_url(self):
-        return reverse('usuario:eliminar_pagina', kwargs={'pk': self.pk})
+        return reverse('noticia:eliminar_pagina', kwargs={'pk': self.pk})
 
     def get_absolute_url(self):
-        return reverse('usuario:ver_pagina', kwargs={'pk': self.pk})
+        return reverse('noticia:ver_pagina', kwargs={'pk': self.pk})
 
     def __unicode__(self):
         return self.titulo

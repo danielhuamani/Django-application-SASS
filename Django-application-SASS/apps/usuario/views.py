@@ -17,9 +17,9 @@ def ingresar(request):
 
     if request.method == "POST":
         dominio = request.POST.get("dominio")+".localhost"
-        print (dominio)
+
         usuario = get_object_or_404(Usuario, domain_url=dominio)
-        print "entro"
+
         print (dominio+".localhost:8004")
         return HttpResponseRedirect("http://"+dominio+":8004")
     return render_to_response('portal/login.html', locals(), context_instance=ctx(request))

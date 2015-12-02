@@ -5,15 +5,13 @@ from .models import Usuario
 class UsuarioBackend(object):
 
     def authenticate(self, username=None, password=None):
-        print "---------"
-        print username
-        print password
+
         try:
             user = Usuario.objects.get(usuario=username)
 
         except Usuario.DoesNotExist:
             return None
-        print user.domain_url
+
         if user.is_password_valid(password):
             user.last_login = datetime.now()
             user.save()

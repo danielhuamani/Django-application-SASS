@@ -99,7 +99,7 @@ DATABASES = {
         'ENGINE': 'tenant_schemas.postgresql_backend',
         'NAME': 'prueba_sass',
         'USER': 'postgres',
-        'PASSWORD': 'daniel',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': '',
         'CONN_MAX_AGE': None,
