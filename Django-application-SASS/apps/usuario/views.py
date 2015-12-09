@@ -14,14 +14,15 @@ from .forms import IngresarForm
 
 def ingresar(request):
     ''' Vista de login '''
-
+    usuario_principal = get_object_or_404(Usuario, schema_name='public')
+    print (usuario_principal.domain_url)
     if request.method == "POST":
-        dominio = request.POST.get("dominio")+".localhost"
+        dominio = request.POST.get("dominio")+"."+usuario_principal.domain_url
 
         usuario = get_object_or_404(Usuario, domain_url=dominio)
 
         print (dominio+".localhost:8004")
-        return HttpResponseRedirect("http://"+dominio+":8004")
+        return HttpResponseRedirect("http://"+dominio+":8000")
     return render_to_response('portal/login.html', locals(), context_instance=ctx(request))
 
 
